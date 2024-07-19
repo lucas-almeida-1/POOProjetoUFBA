@@ -1,0 +1,189 @@
+@startclass
+class BancoDeDados {
+- jogoLista: Jogo[]
+- softwareLista: Software[]
+- soundtrackLista: Soundtrack[]
+- cardsLista: Cards[]
+- skinsLista: Skins[]
+- fisicosLista: ProdutosFisicos[]
+
++ adicionarJogo()
++ removerJogo()
++ adicionarSoftware()
++ removerSoftware()
++ adicionarSoundtrack()
++ removerSoundtrack()
++ adicionarCards()
++ removerCards()
++ adicionarSkins()
++ removerSkins()
++ adicionarFisicos()
++ removerFisicos()
+content_copy
+Use code with caution.
+
+}
+
+class LeitorDeDados {
++ lerJogo()
++ lerSoftware()
++ lerSoundTrack()
++ lerSkin()
++ lerCard()
++ lerProdutoFisico() // Alterar depois
+}
+
+class ProdutosFisicos {
+- descrição: String
+- tamanho: Double
+
++ calcularFrete()
+content_copy
+Use code with caution.
+
+}
+
+class Usuario {
+- username: string
+- email: string
+- senha: string
+}
+
+class Perfil {
+- apelido: string
+- amigos: Usuario[]
+- conquistas: Conquistas[]
+- listaDesejos: Item[]
+
++ adicionarAmigo()
++ removerAmigo()
++ adicionarItem()
++ removerItem()
++ promoção()
++ mostrarConquistas()
++ mudarApelido()
+content_copy
+Use code with caution.
+
+}
+
+class Loja <> {
+- item: Item[]
+
++ procurar()
++ comprar()
++ filtrarItem()
+content_copy
+Use code with caution.
+
+}
+
+class Biblioteca {
+- item: Item[]
+
++ abrirItem()
++ fecharItem()
++ gerenciarArquivos()
++ instalarItem()
++ desinstalarItem()
+content_copy
+Use code with caution.
+
+}
+
+class Item <> {
+- nome: string
+- id: string
+- preço: string
+- comprado: boolean
+- aberto: boolean
+- instalado: boolean
+}
+
+class Jogo {
+- tempoDeUso: float
+- temConquista: boolean
+
++ contabilizarTempo()
+content_copy
+Use code with caution.
+
+}
+
+class Software {
+- tempoDeUso: float
+
++ contabilizarTempo()
+content_copy
+Use code with caution.
+
+}
+
+class Soundtrack {
+- tocando: boolean
+
++ tocar()
++ pausar()
++ proximo()
++ mudarVolume()
+content_copy
+Use code with caution.
+
+}
+
+class Cards {
+- nomeDoCard: String
+- ItemRelacionado: Item // Alterar depois
+- CardsParaInsígnia: int
+
++ craftarInsígnia()
+content_copy
+Use code with caution.
+
+}
+
+class Skins {
+- nomeDaSkin: String
+- ItemRelacionado: Jogo
+- conquistado: boolean
+
++ equipar()
+content_copy
+Use code with caution.
+
+}
+
+class Conquistas {
+- nomeDaConquista: string
+- descriçãoDaConquista: string
+- jogoRelacionado: Jogo
+
++ desbloquearConquista()
+content_copy
+Use code with caution.
+
+}
+
+Usuario --> Perfil
+Perfil *-- Loja
+Perfil *-- Biblioteca
+Loja --> Item
+Biblioteca .. Item
+Item --|> Jogo
+Item --|> Software
+Item --|> Soundtrack
+Item --|> Cards
+Item --|> Skins
+Jogo ..> Soundtrack
+Jogo "tem" .. Conquistas
+ProdutosFisicos --|> Item
+
+note left of Item : -item-
+
+note left of ProdutosFisicos : -desc-
+note left of ProdutosFisicos : -tamanho-
+note left of ProdutosFisicos : -promoção-
+
+@dataclass BancoDeDados, LeitorDeDados, ProdutosFisicos, Usuario, Perfil, Loja,
+Biblioteca, Item, Jogo, Software, Soundtrack, Cards, Skins, Conquistas
+@enduml
