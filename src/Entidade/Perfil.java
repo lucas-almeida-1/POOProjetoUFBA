@@ -6,8 +6,8 @@ public class Perfil extends Usuario{
     private Conquistas[] conquistas;
     private Item[] ListaDeDesejos;
 
-    public Perfil(String usernome, String senha, String email, String apelido, Usuario[] amigos, Conquistas[] conquistas, Item[] listaDeDesejos) {
-        super(usernome, senha, email);
+    public Perfil(String username, String senha, String email, String apelido, Usuario[] amigos, Conquistas[] conquistas, Item[] listaDeDesejos) {
+        super(username, senha, email);
         this.apelido = apelido;
         this.amigos = amigos;
         this.conquistas = conquistas;

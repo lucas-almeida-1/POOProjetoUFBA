@@ -1,22 +1,22 @@
 package Entidade;
 
 public class Usuario {
-    private String usernome;
+    private String username;
     private String senha;
     private String email;
 
-    public Usuario(String usernome, String senha, String email) {
-        this.usernome = usernome;
+    public Usuario(String username, String senha, String email) {
+        this.username = username;
         this.senha = senha;
         this.email = email;
     }
 
-    public String getUsernome() {
-        return usernome;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUsernome(String usernome) {
-        this.usernome = usernome;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getSenha() {
