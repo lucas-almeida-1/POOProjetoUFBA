@@ -6,8 +6,6 @@ import Entidade.Conquistas;
 import Entidade.Item;
 
 public class Start {
-
-    // COMENTARIO FDS //
     public static void main(String[] args) {
         Perfil perfil = new Perfil("user", "senha", "email", "apelido", new Usuario[0], new Conquistas[0], new Item[0]);
         Usuario usuario = new Usuario("user", "senha", "email");
