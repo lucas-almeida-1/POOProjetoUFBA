@@ -6,7 +6,7 @@ import java.awt.*;
 public class Screen extends JFrame {
     public Screen() {
 
-        // Frame settings
+        // Frame config
         setTitle("Steam Verde");
         setSize(1280, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,27 +31,27 @@ public class Screen extends JFrame {
         sidebar.setBounds(0, 100, 300, 620);
         sidebar.setLayout(null);
 
-        JButton homeButton = new JButton("LOJA");
-        homeButton.setBounds(50, 50, 200, 50);
-        homeButton.setFont(new Font("Arial", Font.BOLD, 20));
-        homeButton.setForeground(new Color(245, 241, 241));
-        homeButton.setBackground(new Color(18, 17, 17));
+        JButton LojaButton = new JButton("LOJA");
+        LojaButton.setBounds(50, 50, 200, 50);
+        LojaButton.setFont(new Font("Arial", Font.BOLD, 20));
+        LojaButton.setForeground(new Color(245, 241, 241));
+        LojaButton.setBackground(new Color(18, 17, 17));
 
-        JButton libraryButton = new JButton("BIBLIOTECA");
-        libraryButton.setBounds(50, 120, 200, 50);
-        libraryButton.setFont(new Font("Arial", Font.BOLD, 20));
-        libraryButton.setForeground(new Color(245, 241, 241));
-        libraryButton.setBackground(new Color(18, 17, 17));
+        JButton BibliotecaButton = new JButton("BIBLIOTECA");
+        BibliotecaButton.setBounds(50, 120, 200, 50);
+        BibliotecaButton.setFont(new Font("Arial", Font.BOLD, 20));
+        BibliotecaButton.setForeground(new Color(245, 241, 241));
+        BibliotecaButton.setBackground(new Color(18, 17, 17));
 
-        JButton storeButton = new JButton("PERFIL");
-        storeButton.setBounds(50, 190, 200, 50);
-        storeButton.setFont(new Font("Arial", Font.BOLD, 20));
-        storeButton.setForeground(new Color(245, 241, 241));
-        storeButton.setBackground(new Color(18, 17, 17));
+        JButton PerfilButton = new JButton("PERFIL");
+        PerfilButton.setBounds(50, 190, 200, 50);
+        PerfilButton.setFont(new Font("Arial", Font.BOLD, 20));
+        PerfilButton.setForeground(new Color(245, 241, 241));
+        PerfilButton.setBackground(new Color(18, 17, 17));
 
-        sidebar.add(homeButton);
-        sidebar.add(libraryButton);
-        sidebar.add(storeButton);
+        sidebar.add(LojaButton);
+        sidebar.add(BibliotecaButton);
+        sidebar.add(PerfilButton);
 
         // Main Content Area
         JPanel mainContent = new JPanel();
@@ -65,6 +65,7 @@ public class Screen extends JFrame {
         welcomeLabel.setBounds(50, 50, 400, 50);
         mainContent.add(welcomeLabel);
 
+       //Botao Login + msg pos click
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(350, 300, 200, 70);
         loginButton.setFont(new Font("Arial", Font.BOLD, 20));
@@ -80,7 +81,7 @@ public class Screen extends JFrame {
         loginField.setForeground(new Color(41, 105, 50));
         mainContent.add(loginField);
 
-        // Add panels to the frame
+        // Adds da tela
         add(header);
         add(sidebar);
         add(mainContent);
