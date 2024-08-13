@@ -75,11 +75,11 @@ public class Screen extends JFrame {
                 "Login efetuado corretamente", "Login", JOptionPane.INFORMATION_MESSAGE));
         mainContent.add(loginButton);
 
-        JTextField loginField = new JTextField("Digite o seu login");
-        loginField.setBounds(50, 200, 500, 50);
-        loginField.setFont(new Font("Arial", Font.ITALIC, 20));
-        loginField.setForeground(new Color(41, 105, 50));
-        mainContent.add(loginField);
+        JTextField text = new JTextField("Digite o seu login");
+        text.setBounds(50, 200, 500, 50);
+        text.setFont(new Font("Arial", Font.ITALIC, 20));
+        text.setForeground(new Color(41, 105, 50));
+        mainContent.add(text);
 
         // Adds da tela
         add(header);
