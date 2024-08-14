@@ -47,5 +47,6 @@ public class Perfil extends Usuario{
     }
 
     public String getUsername() {
+        return "";
     }
 }
