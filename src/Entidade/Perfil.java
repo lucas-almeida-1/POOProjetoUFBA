@@ -45,4 +45,7 @@ public class Perfil extends Usuario{
     public void setListaDeDesejos(Item[] listaDeDesejos) {
         ListaDeDesejos = listaDeDesejos;
     }
+
+    public String getUsername() {
+    }
 }
