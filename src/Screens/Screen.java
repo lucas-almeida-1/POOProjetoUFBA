@@ -6,8 +6,8 @@ import java.awt.*;
 public class Screen extends JFrame {
     public Screen() {
 
-        // Frame config
-        setTitle("Steam Verde");
+        // Janela
+        setTitle("Steam Verde Beta 1.0");
         setSize(1280, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -25,7 +25,7 @@ public class Screen extends JFrame {
         title.setBounds(20, 25, 300, 50);
         header.add(title);
 
-        // Sidebar
+        // Sidebar - Canto esquerdo
         JPanel sidebar = new JPanel();
         sidebar.setBackground(new Color(44, 44, 44));
         sidebar.setBounds(0, 100, 300, 620);
@@ -59,11 +59,13 @@ public class Screen extends JFrame {
         mainContent.setBounds(300, 100, 980, 620);
         mainContent.setLayout(null);
 
-        JLabel welcomeLabel = new JLabel("Bem vindo ao Steam Verde");
-        welcomeLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        welcomeLabel.setForeground(new Color(245, 241, 241));
-        welcomeLabel.setBounds(50, 50, 400, 50);
-        mainContent.add(welcomeLabel);
+        JLabel jLabel = new JLabel("Bem vindo ao Steam Verde"); // Jlabel texto de marcacao
+        jLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        jLabel.setForeground(new Color(245, 241, 241));
+        jLabel.setBounds(50, 50, 400, 50);
+        mainContent.add(jLabel);
+
+
 
        //Botao Login + msg pos click
         JButton loginButton = new JButton("Login");
@@ -75,13 +77,13 @@ public class Screen extends JFrame {
                 "Login efetuado corretamente", "Login", JOptionPane.INFORMATION_MESSAGE));
         mainContent.add(loginButton);
 
-        JTextField text = new JTextField("Digite o seu login");
+        JTextField text = new JTextField("Digite o seu login"); // Caixa de texto login
         text.setBounds(50, 200, 500, 50);
         text.setFont(new Font("Arial", Font.ITALIC, 20));
         text.setForeground(new Color(41, 105, 50));
         mainContent.add(text);
 
-        JTextField text2 = new JTextField("Digite a senha");
+        JTextField text2 = new JTextField("Digite a senha"); // Caixa de texto senha
         text2.setBounds(50, 255, 500, 50);
         text2.setFont(new Font("Arial", Font.ITALIC, 20));
         text2.setForeground(new Color(41, 105, 50));
