@@ -31,6 +31,10 @@ public class Pedido extends Carrinho {
         this.pagamento = pagamento;
     }
 
+    public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total) {
+        super();
+    }
+
     public UUID getIdPedido() {
         return idPedido;
     }
@@ -70,6 +74,7 @@ public class Pedido extends Carrinho {
     public void setPagamento(boolean pagamento) {
         this.pagamento = pagamento;
     }
+
     public void finalizarCompra(String accessToken, String paymentMethodId, String token, String email) {
         // Configurar o token de acesso
         MercadoPagoConfig.setAccessToken(accessToken);

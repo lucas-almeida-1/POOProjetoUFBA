@@ -10,10 +10,12 @@ import Entidade.Usuario;
 import Entidade.Conquistas;
 import Entidade.Item;
 import Screens.Screen;
-import Entidade.Produtos.Compra.*;
+import Entidade.Produtos.Compra.Pedido;
+import Entidade.Produtos.Compra.Carrinho;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 public class Start {
@@ -22,6 +24,7 @@ public class Start {
         Usuario user2 = new Usuario("user2", "user2", "user2@gmail.com");
         Usuario user3 = new Usuario("user3", "user3", "user3@gmail.com");
         Usuario user4 = new Usuario("user4", "user4", "user4@gmail.com");
+        //Criar Carrinho
 
         Jogos EldenRing = new Jogos("Elden Ring", "0000",150, 48,true);
         Jogos TheLastOfUsI = new Jogos("TheLastOfUsI", "0001",100, 60,true);
@@ -57,7 +60,7 @@ public class Start {
         listaDesejos.add(estatuaJoel);
 
         Perfil perfil = new Perfil("rafael", "rafael123", "rafael123@gmail.com", "Treezi"
-        , amigos, conquistas, listaDesejos);
+                , amigos, conquistas, listaDesejos);
 
         System.out.println("Bem-vindo a nossa Steam Verde");
         TimeUnit.SECONDS.sleep(3);
@@ -115,9 +118,26 @@ public class Start {
                 }
             }
         }
-        // criar carrinho
-        Carrinho carrinho = new Carrinho();
-        new Screen();
+        // Criar Carrinho
+        Carrinho carrinho = new Carrinho(user1, UUID.randomUUID(), new Item[10], 0, 0);
+
+        // Adicionar itens ao carrinho
+        carrinho.addCarrinho(EldenRing);
+        carrinho.addCarrinho(TheLastOfUsI);
+        carrinho.addCarrinho(HollowKnight);
+        carrinho.addCarrinho(AppEngine);
+        carrinho.addCarrinho(FuzilAzul);
+        carrinho.addCarrinho(estatuaJoel);
+
+        // Mostrar detalhes do carrinho
+        carrinho.detalhesCarrinho();
+        carrinho.fazerPedido();
+        if(carrinho.fazerPedido() != null){
+            System.out.println("Pedido feito, realize pagamento");
+        }
+        Pedido pedido = null;
+        pedido.finalizarCompra("token", "paymentMethodId", "token", "email");
+
 
     }
 }

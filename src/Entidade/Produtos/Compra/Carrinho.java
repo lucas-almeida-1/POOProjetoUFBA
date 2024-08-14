@@ -23,6 +23,10 @@ public class Carrinho {
         this.total = total;
     }
 
+    public Carrinho() {
+
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -85,5 +89,13 @@ public class Carrinho {
         System.out.println("Total: " + total);
     }
     // Fazer pedido
+    public Pedido fazerPedido(){
+        Pedido pedido1 = new Pedido(usuario, idcart, itens, qtdItens, total);
+        return pedido1;
+    }
+
+    private Pedido pedido1;
+    public Pedido pedido = pedido1;
+
 
 }
