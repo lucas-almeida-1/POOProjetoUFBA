@@ -3,7 +3,7 @@ package Entidade.Produtos.Compra;
 import Entidade.Item;
 import Entidade.Produtos.Jogos;
 import Entidade.Usuario;
-
+import Entidade.Produtos.Compra.Pedido;
 import java.util.UUID;
 // UUI4
 public class Carrinho {
@@ -84,6 +84,6 @@ public class Carrinho {
         }
         System.out.println("Total: " + total);
     }
-    // CRIAR PEDIDO
+    // Fazer pedido
 
 }

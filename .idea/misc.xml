@@ -5,11 +5,15 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/mercadopago/pom.xml" />
+        <option value="$PROJECT_DIR$/maven/pom.xml" />
+        <option value="$PROJECT_DIR$/../sdk-java/sdk-mercadopago/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/maven/pom.xml" />
         <option value="$PROJECT_DIR$/mercadopago/pom.xml" />
+        <option value="$PROJECT_DIR$/../sdk-java/sdk-mercadopago/pom.xml" />
       </set>
     </option>
   </component>

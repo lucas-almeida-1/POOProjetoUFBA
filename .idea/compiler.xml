@@ -9,7 +9,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="maven" target="1.8" />
       <module name="mercadopago" target="22" />
+      <module name="sdk-mercadopago" target="22" />
     </bytecodeTargetLevel>
   </component>
 </project>

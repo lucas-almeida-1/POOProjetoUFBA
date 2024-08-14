@@ -1,6 +1,7 @@
 package Start;
 
 import Entidade.Perfil;
+import Entidade.Produtos.Compra.Carrinho;
 import Entidade.Produtos.Jogos;
 import Entidade.Produtos.ProdutosFisicos;
 import Entidade.Produtos.Skin;
@@ -9,6 +10,7 @@ import Entidade.Usuario;
 import Entidade.Conquistas;
 import Entidade.Item;
 import Screens.Screen;
+import Entidade.Produtos.Compra.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -113,6 +115,9 @@ public class Start {
                 }
             }
         }
+        // criar carrinho
+        Carrinho carrinho = new Carrinho();
         new Screen();
+
     }
 }
