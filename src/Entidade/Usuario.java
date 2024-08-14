@@ -1,16 +1,19 @@
 package Entidade;
 
 public class Usuario {
+    //Atributos
     private String username;
     private String senha;
     private String email;
 
+    //Construtor
     public Usuario(String username, String senha, String email) {
         this.username = username;
         this.senha = senha;
         this.email = email;
     }
 
+    //Métodos Get e Set
     public String getUsername() {
         return username;
     }
