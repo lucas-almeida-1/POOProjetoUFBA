@@ -20,7 +20,7 @@ public class Soundtrack extends Jogos {
     }
 
     //Método Get e Set
-    public boolean isTocando() {
+    public boolean getTocando() {
         return tocando;
     }
 

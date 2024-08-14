@@ -1,19 +1,25 @@
 package Entidade;
 
-public class Perfil extends Usuario{
-    private String apelido;
-    private Usuario[] amigos;
-    private Conquistas[] conquistas;
-    private Item[] ListaDeDesejos;
+import java.util.ArrayList;
 
-    public Perfil(String username, String senha, String email, String apelido, Usuario[] amigos, Conquistas[] conquistas, Item[] listaDeDesejos) {
+public class Perfil extends Usuario{
+    //Atributos
+    private String apelido;
+    private ArrayList<Usuario> amigos;
+    private ArrayList<Conquistas> conquistas;
+    private ArrayList<Item> listaDeDesejos;
+
+    //Construtor
+    public Perfil(String username, String senha, String email, String apelido, ArrayList<Usuario> amigos,
+                  ArrayList<Conquistas> conquistas, ArrayList<Item> listaDeDesejos) {
         super(username, senha, email);
         this.apelido = apelido;
         this.amigos = amigos;
         this.conquistas = conquistas;
-        ListaDeDesejos = listaDeDesejos;
+        this.listaDeDesejos = listaDeDesejos;
     }
 
+    //Métodos Get e Set
     public String getApelido() {
         return apelido;
     }
@@ -22,27 +28,27 @@ public class Perfil extends Usuario{
         this.apelido = apelido;
     }
 
-    public Usuario[] getAmigos() {
+    public ArrayList<Usuario> getAmigos() {
         return amigos;
     }
 
-    public void setAmigos(Usuario[] amigos) {
+    public void setAmigos(ArrayList<Usuario> amigos) {
         this.amigos = amigos;
     }
 
-    public Conquistas[] getConquistas() {
+    public ArrayList<Conquistas> getConquistas() {
         return conquistas;
     }
 
-    public void setConquistas(Conquistas[] conquistas) {
+    public void setConquistas(ArrayList<Conquistas> conquistas) {
         this.conquistas = conquistas;
     }
 
-    public Item[] getListaDeDesejos() {
-        return ListaDeDesejos;
+    public ArrayList<Item> getListaDeDesejos() {
+        return listaDeDesejos;
     }
 
-    public void setListaDeDesejos(Item[] listaDeDesejos) {
-        ListaDeDesejos = listaDeDesejos;
+    public void setListaDeDesejos(ArrayList<Item> listaDeDesejos) {
+        this.listaDeDesejos = listaDeDesejos;
     }
 }
