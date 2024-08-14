@@ -5,5 +5,5 @@ Projeto final da disciplina de Programação Orientada a Objetos (MATA55)
 Lucas Almeida de Lima  
 Rafael Rocha Moura Vieira  
 Gabriel Chaves Prates  
-Rafael Alves
+Rafael Alves  
 Thales Leo Almeida
