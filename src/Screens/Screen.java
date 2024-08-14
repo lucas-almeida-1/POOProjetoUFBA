@@ -67,7 +67,7 @@ public class Screen extends JFrame {
 
        //Botao Login + msg pos click
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(350, 300, 200, 70);
+        loginButton.setBounds(350, 310, 200, 70);
         loginButton.setFont(new Font("Arial", Font.BOLD, 20));
         loginButton.setForeground(new Color(245, 241, 241));
         loginButton.setBackground(new Color(18, 17, 17));
@@ -80,6 +80,12 @@ public class Screen extends JFrame {
         text.setFont(new Font("Arial", Font.ITALIC, 20));
         text.setForeground(new Color(41, 105, 50));
         mainContent.add(text);
+
+        JTextField text2 = new JTextField("Digite a senha");
+        text2.setBounds(50, 255, 500, 50);
+        text2.setFont(new Font("Arial", Font.ITALIC, 20));
+        text2.setForeground(new Color(41, 105, 50));
+        mainContent.add(text2);
 
         // Adds da tela
         add(header);
