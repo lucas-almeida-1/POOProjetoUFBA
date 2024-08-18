@@ -1,7 +1,6 @@
 package Start;
 
 import Entidade.Perfil;
-import Entidade.Produtos.Compra.Carrinho;
 import Entidade.Produtos.Jogos;
 import Entidade.Produtos.ProdutosFisicos;
 import Entidade.Produtos.Skin;
@@ -133,34 +132,23 @@ public class Start {
             new Screen();
         }
         // Criar Carrinho
-        Carrinho carrinho = new Carrinho(user1, UUID.randomUUID(), new Item[10], 0, 0);
+//        Carrinho carrinho = new Carrinho(user1, UUID.randomUUID(), new Item[10], 0, 0);
 
         // Adicionar itens ao carrinho
-        carrinho.addCarrinho(EldenRing);
-        carrinho.addCarrinho(TheLastOfUsI);
-        carrinho.addCarrinho(HollowKnight);
-        carrinho.addCarrinho(AppEngine);
-        carrinho.addCarrinho(FuzilAzul);
-        carrinho.addCarrinho(estatuaJoel);
+//        carrinho.addCarrinho(EldenRing);
+//        carrinho.addCarrinho(TheLastOfUsI);
+//        carrinho.addCarrinho(HollowKnight);
+//        carrinho.addCarrinho(AppEngine);
+//        carrinho.addCarrinho(FuzilAzul);
+//        carrinho.addCarrinho(estatuaJoel);
 
         // Mostrar detalhes do carrinho
-        carrinho.detalhesCarrinho();
-<<<<<<< HEAD
-        /* carrinho.fazerPedido();
-=======
-        carrinho.fazerPedido();
->>>>>>> 588f58b008a78ca86f021f8e0df2523cb62d3045
-        if(carrinho.fazerPedido() != null){
-            System.out.println("Pedido feito, realize pagamento");
-        }
+//        carrinho.detalhesCarrinho();
+
+//        if(carrinho.fazerPedido() != null){
+//            System.out.println("Pedido feito, realize pagamento");
+//        }
         Pedido pedido = null;
         pedido.finalizarCompra("token", "paymentMethodId", "token", "email");
-
-
     }
-<<<<<<< HEAD
-            */
-}  }
-=======
 }
->>>>>>> 588f58b008a78ca86f021f8e0df2523cb62d3045
