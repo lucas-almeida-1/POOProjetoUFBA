@@ -145,7 +145,11 @@ public class Start {
 
         // Mostrar detalhes do carrinho
         carrinho.detalhesCarrinho();
+<<<<<<< HEAD
         /* carrinho.fazerPedido();
+=======
+        carrinho.fazerPedido();
+>>>>>>> 588f58b008a78ca86f021f8e0df2523cb62d3045
         if(carrinho.fazerPedido() != null){
             System.out.println("Pedido feito, realize pagamento");
         }
@@ -154,5 +158,9 @@ public class Start {
 
 
     }
+<<<<<<< HEAD
             */
 }  }
+=======
+}
+>>>>>>> 588f58b008a78ca86f021f8e0df2523cb62d3045
