@@ -3,8 +3,9 @@ package Entidade.Produtos.Compra;
 import Entidade.Item;
 import Entidade.Produtos.Jogos;
 import Entidade.Usuario;
-import Entidade.Produtos.Compra.Pedido;
+
 import java.util.UUID;
+import Entidade.Produtos.Card;
 // UUI4
 public class Carrinho {
     // UUI4
@@ -15,12 +16,16 @@ public class Carrinho {
     private int qtdItens ;
     private float total;
 
-    public Carrinho(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total) {
+    public Carrinho(Usuario usuario, UUID idcart, Item[] itens) {
         this.usuario = usuario;
         this.idcart = UUID.randomUUID();
         this.itens = itens;
-        this.qtdItens = qtdItens;
+        this.qtdItens = 1;
         this.total = total;
+    }
+
+    public Carrinho() {
+
     }
 
     public Usuario getUsuario() {
@@ -77,13 +82,22 @@ public class Carrinho {
         }
     }
     // DETALHES DO CARRINHO
-    public void detalhesCarrinho(){
+    public boolean detalhesCarrinho(){
         System.out.println("Carrinho de compras: ");
         for (int i = 0; i < qtdItens; i++){
             System.out.println("Item: " + itens[i].getNome() + " Preço: " + itens[i].getPreco());
         }
         System.out.println("Total: " + total);
-    }
+        return true;
+}
     // Fazer pedido
+    public Pedido fazerPedido(){
+        Pedido pedido1 = new Pedido(usuario, idcart, itens, qtdItens, total);
+        return pedido1;
+    }
+
+    private Pedido pedido1;
+    public Pedido pedido = pedido1;
+
 
 }

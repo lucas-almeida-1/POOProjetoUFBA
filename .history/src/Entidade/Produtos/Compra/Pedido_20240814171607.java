@@ -8,6 +8,7 @@ import java.util.UUID;
 import Entidade.Item;
 import Entidade.Usuario;
 import com.mercadopago.MercadoPagoConfig;
+
 import com.mercadopago.client.payment.PaymentClient;
 import com.mercadopago.client.payment.PaymentCreateRequest;
 import com.mercadopago.client.payment.PaymentPayerRequest;
@@ -23,7 +24,7 @@ public class Pedido extends Carrinho {
     private boolean pagamento;
 
     public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total, UUID idPedido, LocalDateTime dataPedido, boolean status, BigDecimal valorTotal, boolean pagamento) {
-        super(usuario, idcart, itens, qtdItens, total);
+        super(usuario, idcart, itens);
         this.idPedido = UUID.randomUUID();
         this.dataPedido = LocalDateTime.now();
         this.status = status;
@@ -99,6 +100,7 @@ public class Pedido extends Carrinho {
             if ("approved".equals(payment.getStatus())) {
                 this.pagamento = true;
                 this.status = true; // O status do pedido é alterado para "finalizado"
+
                 System.out.println("Pagamento aprovado! ID do pagamento: " + payment.getId());
             } else {
                 this.pagamento = false;
@@ -113,3 +115,5 @@ public class Pedido extends Carrinho {
         } catch (MPException e) {
             throw new RuntimeException(e);
         }
+    }
+}
