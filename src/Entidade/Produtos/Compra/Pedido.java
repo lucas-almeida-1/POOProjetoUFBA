@@ -12,26 +12,27 @@ import java.net.URL;
 import Entidade.Item;
 import Entidade.Usuario;
 
-public class Pedido extends Carrinho {
+public class Pedido {
     private UUID idPedido;
     private LocalDateTime dataPedido;
     private boolean status;
     private BigDecimal valorTotal;
     private boolean pagamento;
+    private Item[] itens; // Array de itens do pedido
+    private Usuario usuario; // Usuário associado ao pedido
 
-    // Construtor correto
-    public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total) {
-        super(usuario, idcart, itens.length); // Chama o construtor da superclasse com a capacidade do carrinho
+    // Construtor
+    public Pedido(Usuario usuario, Item[] itens, BigDecimal total) {
         this.idPedido = UUID.randomUUID();
         this.dataPedido = LocalDateTime.now();
         this.status = false;
-        this.valorTotal = BigDecimal.valueOf(total);
+        this.valorTotal = total;
         this.pagamento = false;
+        this.itens = itens;
+        this.usuario = usuario;
+    }
 
-        // Adiciona todos os itens ao carrinho
-        for (Item item : itens) {
-            addCarrinho(item); // Adiciona cada item ao carrinho
-        }
+    public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total) {
     }
 
     public void finalizarCompra(String paymentMethodId, String token, String email) {
@@ -39,6 +40,10 @@ public class Pedido extends Carrinho {
         String accessToken = System.getenv("MERCADO_PAGO_ACCESS_TOKEN");
         if (accessToken == null || accessToken.isEmpty()) {
             System.out.println("Token de acesso não encontrado nas variáveis de ambiente.");
+            return;
+        }
+        if (itens == null || itens.length == 0) {
+            System.out.println("O carrinho está vazio.");
             return;
         }
 
@@ -98,7 +103,6 @@ public class Pedido extends Carrinho {
         }
     }
 
-
     // Getters e Setters
     public UUID getIdPedido() {
         return idPedido;
@@ -118,5 +122,13 @@ public class Pedido extends Carrinho {
 
     public boolean isPagamento() {
         return pagamento;
+    }
+
+    public Item[] getItens() {
+        return itens;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 }

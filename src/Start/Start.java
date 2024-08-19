@@ -64,7 +64,20 @@ public class Start {
         // Criar carrinho
         Carrinho carrinho = new Carrinho(user1, UUID.randomUUID(), 10); // Capacidade do carrinho
 
-        System.out.println("Steam Verde: Entretenimento Sustentável com Triciclo Eco\n");
+        System.out.println("Steam Verde: Entretenimento Sustentável com Triciclo Eco\n" +
+                "A Steam Verde é uma iniciativa inovadora que visa oferecer uma alternativa sustentável para os gamers, permitindo que eles troquem materiais recicláveis por créditos que podem ser usados para comprar jogos. Essa proposta não apenas promove a sustentabilidade, mas também democratiza o acesso aos jogos, que muitas vezes são caros para a população brasileira.\n" +
+                "Como Funciona\n" +
+                "Postos de Coleta: Os usuários podem levar materiais recicláveis a postos de coleta parceiros, como os do site triciclo.eco.br. Esses postos aceitam uma variedade de materiais, incentivando a reciclagem e a conscientização ambiental.\n" +
+                "Créditos em Tricoins: A cada 100 Tricoins, os usuários ganham R$ 0,15. Esses créditos podem ser acumulados e utilizados para adquirir jogos na plataforma Steam Verde.\n" +
+                "Troca Sustentável: A ideia é simples: ao reciclar, os usuários não apenas ajudam o meio ambiente, mas também ganham recompensas que podem ser usadas para entretenimento. Isso cria um ciclo positivo, onde a sustentabilidade e o acesso à cultura se entrelaçam.\n" +
+                "Lista de Tricoins por Item\n" +
+                "Abaixo está um exemplo de como os materiais recicláveis podem ser convertidos em Tricoins:\n" +
+                "Material Reciclável\tTricoins por Unidade\n" +
+                "Lata de Alumínio\t10 Tricoins\n" +
+                "Garrafa PET\t5 Tricoins\n" +
+                "Papel (kg)\t3 Tricoins\n" +
+                "Papelão (kg)\t4 Tricoins\n" +
+                "Plástico (kg)\t2 Tricoins\n");
         TimeUnit.SECONDS.sleep(3);
         System.out.println("Você já está logado, vejamos as suas opções:");
         TimeUnit.SECONDS.sleep(2);
