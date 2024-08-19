@@ -3,31 +3,41 @@ package Entidade.Produtos;
 import Entidade.Item;
 
 public class Jogos extends Item {
-    //Atributos
-    protected float tempoUso;
-    protected boolean temConquista;
+    private int duracao; // Duração do jogo em horas
+    private boolean online; // Indica se o jogo é online
 
-    //Construtor
-    public Jogos(String nome, String id, float preco, float tempoUso, boolean temConquista) {
-        super(nome, id, preco);
-        this.tempoUso = tempoUso;
-        this.temConquista = temConquista;
+    // Construtor
+    public Jogos(String nome, String id, float preco, int duracao, boolean online) {
+        super(nome, id, preco, 1); // Chama o construtor da superclasse com a quantidade padrão de 1
+        this.duracao = duracao;
+        this.online = online;
     }
 
-    //Método Get e Set
-    public float getTempoUso() {
-        return tempoUso;
+    // Getters e Setters
+    public int getDuracao() {
+        return duracao;
     }
 
-    public void setTempoUso(float tempoUso) {
-        this.tempoUso = tempoUso;
+    public void setDuracao(int duracao) {
+        this.duracao = duracao;
     }
 
-    public boolean isTemConquista() {
-        return temConquista;
+    public boolean isOnline() {
+        return online;
     }
 
-    public void setTemConquista(boolean temConquista) {
-        this.temConquista = temConquista;
+    public void setOnline(boolean online) {
+        this.online = online;
+    }
+
+    @Override
+    public String toString() {
+        return "Jogos{" +
+                "nome='" + nome + '\'' +
+                ", id='" + id + '\'' +
+                ", preco=" + preco +
+                ", duracao=" + duracao +
+                ", online=" + online +
+                '}';
     }
 }

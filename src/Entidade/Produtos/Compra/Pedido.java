@@ -1,117 +1,121 @@
+package Entidade.Produtos.Compra;
 
- package Entidade.Produtos.Compra;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.UUID;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
- import java.math.BigDecimal;
- import java.time.LocalDateTime;
- import java.util.UUID;
+import Entidade.Item;
+import Entidade.Usuario;
 
- import Entidade.Item;
- import Entidade.Usuario;
- import com.mercadopago.MercadoPagoConfig;
- import com.mercadopago.client.payment.PaymentClient;
- import com.mercadopago.client.payment.PaymentCreateRequest;
- import com.mercadopago.client.payment.PaymentPayerRequest;
- import com.mercadopago.exceptions.MPApiException;
- import com.mercadopago.exceptions.MPException;
- import com.mercadopago.resources.payment.Payment;
+public class Pedido extends Carrinho {
+    private UUID idPedido;
+    private LocalDateTime dataPedido;
+    private boolean status;
+    private BigDecimal valorTotal;
+    private boolean pagamento;
 
- public class Pedido extends Carrinho {
-     private UUID idPedido;
-     private LocalDateTime dataPedido;
-     private boolean status;
-     private BigDecimal valorTotal;
-     private boolean pagamento;
+    // Construtor correto
+    public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total) {
+        super(usuario, idcart, itens.length); // Chama o construtor da superclasse com a capacidade do carrinho
+        this.idPedido = UUID.randomUUID();
+        this.dataPedido = LocalDateTime.now();
+        this.status = false;
+        this.valorTotal = BigDecimal.valueOf(total);
+        this.pagamento = false;
 
-     public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total, UUID idPedido, LocalDateTime dataPedido, boolean status, BigDecimal valorTotal, boolean pagamento) {
-         super(usuario, idcart, itens, qtdItens, total);
-         this.idPedido = UUID.randomUUID();
-         this.dataPedido = LocalDateTime.now();
-         this.status = status;
-         this.valorTotal = valorTotal;
-         this.pagamento = pagamento;
-     }
+        // Adiciona todos os itens ao carrinho
+        for (Item item : itens) {
+            addCarrinho(item); // Adiciona cada item ao carrinho
+        }
+    }
 
-     public Pedido(Usuario usuario, UUID idcart, Item[] itens, int qtdItens, float total) {
-         super();
-     }
+    public void finalizarCompra(String paymentMethodId, String token, String email) {
+        // Recupera o token de acesso da variável de ambiente
+        String accessToken = System.getenv("MERCADO_PAGO_ACCESS_TOKEN");
+        if (accessToken == null || accessToken.isEmpty()) {
+            System.out.println("Token de acesso não encontrado nas variáveis de ambiente.");
+            return;
+        }
 
-     public UUID getIdPedido() {
-         return idPedido;
-     }
+        try {
+            // URL da API de pagamentos do Mercado Pago
+            URL url = new URL("https://api.mercadopago.com/v1/payments");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
 
-     public void setIdPedido(UUID idPedido) {
-         this.idPedido = idPedido;
-     }
+            // Criação do JSON para a requisição
+            String jsonInputString = String.format(
+                    "{\"transaction_amount\": %.2f, \"description\": \"Compra do pedido %s\", \"payment_method_id\": \"%s\", \"token\": \"%s\", \"payer\": {\"email\": \"%s\"}}",
+                    this.valorTotal, this.idPedido, paymentMethodId, token, email
+            );
 
-     public LocalDateTime getDataPedido() {
-         return dataPedido;
-     }
+            // Envio da requisição
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
 
-     public void setDataPedido(LocalDateTime dataPedido) {
-         this.dataPedido = dataPedido;
-     }
+            // Verificação da resposta
+            int responseCode = conn.getResponseCode();
+            StringBuilder response = new StringBuilder();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Lê a resposta do InputStream
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"))) {
+                    String responseLine;
+                    while ((responseLine = br.readLine()) != null) {
+                        response.append(responseLine.trim());
+                    }
+                }
 
-     public boolean isStatus() {
-         return status;
-     }
+                // Verifica o status do pagamento na resposta
+                if (response.toString().contains("\"status\":\"approved\"")) {
+                    this.pagamento = true;
+                    this.status = true;
+                    System.out.println("Pagamento aprovado!");
+                } else {
+                    this.pagamento = false;
+                    this.status = false;
+                    System.out.println("Pagamento não aprovado. Resposta: " + response);
+                }
+            } else {
+                this.pagamento = false;
+                this.status = false;
+                System.out.println("Erro no pagamento. Código de resposta: " + responseCode);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.pagamento = false;
+            this.status = false;
+            System.out.println("Erro ao processar o pagamento: " + e.getMessage());
+        }
+    }
 
-     public void setStatus(boolean status) {
-         this.status = status;
-     }
+    // Getters e Setters
+    public UUID getIdPedido() {
+        return idPedido;
+    }
 
-     public BigDecimal getValorTotal() {
-         return valorTotal;
-     }
+    public LocalDateTime getDataPedido() {
+        return dataPedido;
+    }
 
-     public void setValorTotal(BigDecimal valorTotal) {
-         this.valorTotal = valorTotal;
-     }
+    public boolean isStatus() {
+        return status;
+    }
 
-     public boolean isPagamento() {
-         return pagamento;
-     }
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
 
-     public void setPagamento(boolean pagamento) {
-         this.pagamento = pagamento;
-     }
-
-     public void finalizarCompra(String accessToken, String paymentMethodId, String token, String email) {
-         // Configurar o token de acesso
-         MercadoPagoConfig.setAccessToken(accessToken);
-
-         // Inicializa o cliente de pagamento
-         PaymentClient paymentClient = new PaymentClient();
-
-         // Cria a requisição de pagamento
-         PaymentCreateRequest paymentRequest = PaymentCreateRequest.builder()
-                 .transactionAmount(this.valorTotal)
-                 .description("Compra do pedido " + this.idPedido)
-                 .paymentMethodId(paymentMethodId) // ID do método de pagamento
-                 .token(token) // Token do cartão
-                 .payer(PaymentPayerRequest.builder().email(email).build()) // Email do comprador
-                 .build();
-
-         try {
-             // Realiza o pagamento
-             Payment payment = paymentClient.create(paymentRequest);
-
-             // Verifica o status do pagamento
-             if ("approved".equals(payment.getStatus())) {
-                 this.pagamento = true;
-                 this.status = true; // O status do pedido é alterado para "finalizado"
-                 System.out.println("Pagamento aprovado! ID do pagamento: " + payment.getId());
-             } else {
-                 this.pagamento = false;
-                 this.status = false; // O status do pedido é alterado para "não finalizado"
-                 System.out.println("Pagamento não aprovado. Status: " + payment.getStatus());
-             }
-         } catch (MPApiException e) {
-             e.printStackTrace();
-             this.pagamento = false;
-             this.status = false; // O status do pedido é alterado para "não finalizado"
-             System.out.println("Erro ao processar o pagamento: " + e.getMessage());
-         } catch (MPException e) {
-             throw new RuntimeException(e);
-         }
-     }
- }
+    public boolean isPagamento() {
+        return pagamento;
+    }
+}

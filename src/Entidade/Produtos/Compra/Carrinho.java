@@ -1,33 +1,32 @@
 package Entidade.Produtos.Compra;
 
 import Entidade.Item;
-import Entidade.Produtos.Jogos;
 import Entidade.Usuario;
 
 import java.util.UUID;
-import Entidade.Produtos.Card;
-// UUI4
+
 public class Carrinho {
-    // UUI4
     private Usuario usuario;
     private UUID idcart;
-    // Lista de todos itens e classes descendentes de item como Jogos, Card, ProdutosFisicos, Skin, Software, Soudtrack
     private Item[] itens;
-    private int qtdItens ;
+    private int qtdItens;
     private float total;
 
-    public Carrinho(Usuario usuario, UUID idcart, Item[] itens) {
+    public Carrinho(Usuario usuario, UUID idcart, int capacidade) {
         this.usuario = usuario;
-        this.idcart = UUID.randomUUID();
-        this.itens = itens;
-        this.qtdItens = 1;
-        this.total = total;
+        this.idcart = idcart;
+        this.itens = new Item[capacidade];
+        this.qtdItens = 0;
+        this.total = 0.0f;
     }
 
     public Carrinho() {
-
+        this.itens = new Item[10]; // Capacidade padrão
+        this.qtdItens = 0;
+        this.total = 0.0f;
     }
 
+    // Getters e Setters
     public Usuario getUsuario() {
         return usuario;
     }
@@ -44,60 +43,55 @@ public class Carrinho {
         return itens;
     }
 
-    public void setItens(Item[] itens) {
-        this.itens = itens;
-    }
-
     public int getQtdItens() {
         return qtdItens;
-    }
-
-    public void setQtdItens(int qtdItens) {
-        this.qtdItens = qtdItens;
     }
 
     public float getTotal() {
         return total;
     }
 
-    public void setTotal(float total) {
-        this.total = total;
-    }
-    // MÉTODO ADD CARRINHO
-    public void addCarrinho(Item item){
-        if (qtdItens < itens.length){
+    // Método para adicionar item ao carrinho
+    public void addCarrinho(Item item) {
+        if (item == null) {
+            System.out.println("Erro: O item não pode ser nulo.");
+            return; // Retorna se o item for nulo
+        }
+        if (qtdItens < itens.length) {
             itens[qtdItens] = item;
             qtdItens++;
-            total += item.getPreco();
+            total += item.getPreco(); // Atualiza o total
+        } else {
+            System.out.println("Carrinho cheio! Não é possível adicionar mais itens.");
         }
     }
-    // ATUALIZAR QUANTIDADE ITEM
-    public void atualizarQuantidadeItem(Item item, int quantidade){
-        for (int i = 0; i < qtdItens; i++){
-            if (itens[i].equals(item)){
-                total -= itens[i].getPreco();
-                itens[i].setPreco(quantidade);
-                total += itens[i].getPreco();
+
+
+    // Método para atualizar a quantidade de um item
+    public void atualizarQuantidadeItem(Item item, int quantidade) {
+        for (int i = 0; i < qtdItens; i++) {
+            if (itens[i].equals(item)) {
+                total -= itens[i].getPreco() * itens[i].getQuantidade(); // Remove o preço atual
+                itens[i].setQuantidade(quantidade); // Atualiza a quantidade
+                total += itens[i].getPreco() * quantidade; // Atualiza o total
+                break;
             }
         }
     }
-    // DETALHES DO CARRINHO
-    public boolean detalhesCarrinho(){
+
+    // Método para exibir detalhes do carrinho
+    public boolean detalhesCarrinho() {
         System.out.println("Carrinho de compras: ");
-        for (int i = 0; i < qtdItens; i++){
-            System.out.println("Item: " + itens[i].getNome() + " Preço: " + itens[i].getPreco());
+        for (int i = 0; i < qtdItens; i++) {
+            System.out.println("Item: " + itens[i].getNome() + " Preço: " + itens[i].getPreco() + " Quantidade: " + itens[i].getQuantidade());
         }
         System.out.println("Total: " + total);
         return true;
-}
-    // Fazer pedido
-    public Pedido fazerPedido(){
-        Pedido pedido1 = new Pedido(usuario, idcart, itens, qtdItens, total);
-        return pedido1;
     }
 
-    private Pedido pedido1;
-    public Pedido pedido = pedido1;
-
-
+    // Método para fazer um pedido
+    public Pedido fazerPedido() {
+        Pedido pedido = new Pedido(usuario, idcart, itens, qtdItens, total);
+        return pedido;
+    }
 }
