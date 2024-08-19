@@ -68,21 +68,21 @@ public class Start {
         TimeUnit.SECONDS.sleep(3);
         System.out.println("Você já está logado, vejamos as suas opções:");
         TimeUnit.SECONDS.sleep(2);
-        System.out.println("Digite 'a' para mostrar o seu apelido");
+        System.out.println("Digite '1' para mostrar o seu apelido");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'b' para mostrar o seu email");
+        System.out.println("Digite '2' para mostrar o seu email");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'c' para mostrar o seu username");
+        System.out.println("Digite '3' para mostrar o seu username");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'd' para mostrar os seus amigos");
+        System.out.println("Digite '4' para mostrar os seus amigos");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'e' para mostrar as suas conquistas");
+        System.out.println("Digite '4' para mostrar as suas conquistas");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'f' para mostrar a sua lista de desejos");
+        System.out.println("Digite '5' para mostrar a sua lista de desejos");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'g' para adicionar um item da lista de desejos ao carrinho");
+        System.out.println("Digite '6' para adicionar um item da lista de desejos ao carrinho");
         TimeUnit.SECONDS.sleep(1);
-        System.out.println("Digite 'h' para fazer um pedido");
+        System.out.println("Digite '7' para fazer um pedido");
         TimeUnit.SECONDS.sleep(2);
         System.out.println("Caso queira sair digite qualquer outra coisa");
 
@@ -93,31 +93,31 @@ public class Start {
             String opcao = leitor.nextLine();
 
             switch (opcao) {
-                case "a" ->
+                case "1" ->
                         System.out.println("Seu apelido é " + perfil.getApelido());
-                case "b" ->
+                case "2" ->
                         System.out.println("Seu email é " + perfil.getEmail());
-                case "c" ->
+                case "3" ->
                         System.out.println("Seu username é " + perfil.getUsername());
-                case "d" -> {
+                case "4" -> {
                     System.out.println("A sua lista de amigos é a seguinte: ");
                     for (Usuario amigo : perfil.getAmigos()) {
                         System.out.println(amigo.getUsername());
                     }
                 }
-                case "e" -> {
+                case "5" -> {
                     System.out.println("A sua lista de conquistas é a seguinte: ");
                     for (Conquistas conquista : perfil.getConquistas()) {
                         System.out.println(conquista.getNomeConquista());
                     }
                 }
-                case "f" -> {
+                case "6" -> {
                     System.out.println("A sua lista de desejos é a seguinte: ");
                     for (Item item : perfil.getListaDeDesejos()) {
                         System.out.println(item.getNome());
                     }
                 }
-                case "g" -> {
+                case "7" -> {
                     boolean adicionarMais = true;
 
                     while (adicionarMais) {
@@ -144,17 +144,21 @@ public class Start {
                         }
 
                         System.out.println("Deseja adicionar mais um item ao carrinho ou finalizar o pedido?");
-                        System.out.println("Digite 'a' para adicionar mais um item, 'p' para finalizar o pedido, ou qualquer outra tecla para sair.");
+                        System.out.println("Digite '1' para adicionar mais um item, '2' para finalizar o pedido, ou qualquer outra tecla para sair.");
                         String resposta = leitor.nextLine();
 
-                        if (resposta.equalsIgnoreCase("a")) {
+                        if (resposta.equalsIgnoreCase("1")) {
                             continue; // Volta para o início do laço para adicionar mais itens
-                        } else if (resposta.equalsIgnoreCase("p")) {
+                        } else if (resposta.equalsIgnoreCase("2")) {
                             if (carrinho.getQtdItens() > 0) {
                                 Pedido pedido = carrinho.fazerPedido(); // Faz o pedido
                                 System.out.println("Fazendo pedido...");
                                 pedido.finalizarCompra("token", "paymentMethodId", "email"); // Substitua pelos valores reais
-                                System.out.println("Pedido finalizado com sucesso.");
+                                if (pedido.isStatus()) {
+                                    System.out.println("Pedido finalizado com sucesso.");
+                                } else {
+                                    System.out.println("Falha ao finalizar o pedido.");
+                                }
                             } else {
                                 System.out.println("O carrinho está vazio. Adicione itens antes de fazer um pedido.");
                             }
@@ -166,7 +170,8 @@ public class Start {
                 }
 
 
-                case "h" -> {
+
+                case "h7" -> {
                     if (carrinho.getQtdItens() > 0) {
                         // Enquanto houver itens no carrinho, continue fazendo pedidos
                         while (carrinho.getQtdItens() > 0) {

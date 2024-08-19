@@ -98,6 +98,7 @@ public class Pedido extends Carrinho {
         }
     }
 
+
     // Getters e Setters
     public UUID getIdPedido() {
         return idPedido;
