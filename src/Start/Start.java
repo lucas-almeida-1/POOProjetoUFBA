@@ -11,6 +11,7 @@ import Entidade.Item;
 import Screens.Screen;
 import Entidade.Produtos.Compra.Pedido;
 import Entidade.Produtos.Compra.Carrinho;
+import Screens.Screen2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -63,7 +64,7 @@ public class Start {
 
         // Criar carrinho
         Carrinho carrinho = new Carrinho(user1, UUID.randomUUID(), 10); // Capacidade do carrinho
-
+new Screen2(perfil);
         System.out.println("Steam Verde: Entretenimento Sustentável com Triciclo Eco\n" +
                 "A Steam Verde é uma iniciativa inovadora que visa oferecer uma alternativa sustentável para os gamers, permitindo que eles troquem materiais recicláveis por créditos que podem ser usados para comprar jogos. Essa proposta não apenas promove a sustentabilidade, mas também democratiza o acesso aos jogos, que muitas vezes são caros para a população brasileira.\n" +
                 "Como Funciona\n" +
