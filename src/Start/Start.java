@@ -9,6 +9,7 @@ import Entidade.Usuario;
 import Entidade.Conquistas;
 import Entidade.Item;
 import Screens.Screen;
+import Screens.Screen2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -57,6 +58,8 @@ public class Start {
         Perfil perfil = new Perfil("rafael", "rafael123", "rafael123@gmail.com", "Treezi"
         , amigos, conquistas, listaDesejos);
 
+        // new Screen2(perfil);
+        new Screen();
         System.out.println("Bem-vindo a nossa Steam Verde");
         TimeUnit.SECONDS.sleep(3);
         System.out.println("Você já esta logado, vejamos as suas opções:");
@@ -113,6 +116,6 @@ public class Start {
                 }
             }
         }
-        new Screen();
+
     }
 }
