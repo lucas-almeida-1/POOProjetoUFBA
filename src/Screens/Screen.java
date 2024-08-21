@@ -2,8 +2,13 @@ package Screens;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+
 
 public class Screen extends JFrame {
+
+    JLabel textload;
+
     public Screen() {
 
         // Janela
@@ -59,11 +64,13 @@ public class Screen extends JFrame {
         mainContent.setBounds(300, 100, 980, 620);
         mainContent.setLayout(null);
 
-        JLabel jLabel = new JLabel("Bem vindo ao Steam Verde"); // Jlabel texto de marcacao
-        jLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        jLabel.setForeground(new Color(245, 241, 241));
-        jLabel.setBounds(50, 50, 400, 50);
-        mainContent.add(jLabel);
+        textload = new JLabel("Bem vindo ao Steam Verde"); // Jlabel texto de marcacao
+        textload.setFont(new Font("Arial", Font.BOLD, 28));
+        textload.setForeground(new Color(245, 241, 241));
+        textload.setBounds(50, 50, 400, 50);
+
+
+        mainContent.add(textload);
 
 
 
@@ -84,12 +91,12 @@ public class Screen extends JFrame {
         mainContent.add(text);
 
         JTextField text2 = new JTextField("Digite a senha"); // Caixa de texto senha
-        text2.setBounds(50, 255, 500, 50);
-        text2.setFont(new Font("Arial", Font.ITALIC, 20));
+        text2.setBounds(50, 255, 500, 50); // Posicao
+        text2.setFont(new Font("Arial", Font.ITALIC, 20)); // Tipo da font
         text2.setForeground(new Color(41, 105, 50));
         mainContent.add(text2);
 
-        // Adds da tela
+        // Adds da tela no frame
         add(header);
         add(sidebar);
         add(mainContent);
@@ -97,5 +104,10 @@ public class Screen extends JFrame {
         setVisible(true);
     }
 
+   private void outroteste (ActionEvent actionEvent) {
+
+        textload.setText("Oi");
+
+   }
 
 }
