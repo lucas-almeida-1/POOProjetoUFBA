@@ -63,7 +63,7 @@ public class Screen3 extends JFrame {
         content.setBackground(new Color(24, 24, 24));
         content.setLayout(new GridLayout(3, 4, 10, 10)); // 3 linhas, 4 colunas, com espaçamento de 10px
 
-        // String para imagens capas
+        // String para imagens capas local pc
         String[] imagePaths = {
                 "C:/Users/Thales/OneDrive/Imagens/capas/Elden_Ring.jpg",
                 "C:/Users/Thales/OneDrive/Imagens/capas/Cs_2.jpg",
