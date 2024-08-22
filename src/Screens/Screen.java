@@ -1,15 +1,25 @@
 package Screens;
 
+import Entidade.Perfil;
+import Entidade.Produtos.Jogos;
+import Entidade.Produtos.ProdutosFisicos;
+import Entidade.Produtos.Skin;
+import Entidade.Produtos.Software;
+import Entidade.Usuario;
+import Entidade.Conquistas;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 
 public class Screen extends JFrame {
-
     JLabel textload;
+    private Perfil perfil;  // classe Perfil definida com os métodos e atributos necessários
 
-    public Screen() {
+    public Screen(Perfil perfil) {
+        this.perfil = perfil;
 
         // Janela
         setTitle("Steam Verde Beta 1.0");
@@ -47,12 +57,29 @@ public class Screen extends JFrame {
         BibliotecaButton.setFont(new Font("Arial", Font.BOLD, 20));
         BibliotecaButton.setForeground(new Color(245, 241, 241));
         BibliotecaButton.setBackground(new Color(18, 17, 17));
+        BibliotecaButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                new Screen3(perfil);  // Cria e mostra a nova tela Perfil
+                dispose();  // Fecha a tela atual, opcional dependendo do comportamento desejado
+            }
+        });
+
 
         JButton PerfilButton = new JButton("PERFIL");
         PerfilButton.setBounds(50, 190, 200, 50);
         PerfilButton.setFont(new Font("Arial", Font.BOLD, 20));
         PerfilButton.setForeground(new Color(245, 241, 241));
         PerfilButton.setBackground(new Color(18, 17, 17));
+
+        // Adicionando ação ao botão para abrir a nova tela
+        PerfilButton.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                new Screen2(perfil);  // Cria e mostra a nova tela Perfil
+                dispose();  // Fecha a tela atual
+            }
+        });
 
         sidebar.add(LojaButton);
         sidebar.add(BibliotecaButton);
@@ -71,7 +98,6 @@ public class Screen extends JFrame {
 
 
         mainContent.add(textload);
-
 
 
        //Botao Login + msg pos click
@@ -106,7 +132,7 @@ public class Screen extends JFrame {
 
    private void outroteste (ActionEvent actionEvent) {
 
-        textload.setText("Oi");
+        textload.setText("Perfil testing");
 
    }
 

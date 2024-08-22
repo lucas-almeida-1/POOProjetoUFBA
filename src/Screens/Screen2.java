@@ -45,13 +45,14 @@ public class Screen2 extends JFrame {
         sidebar.setLayout(null);
 
         // Botoes da barra lateral
-        JButton apelidoButton = createSidebarButton("Mostrar Apelido", 50);
-        JButton emailButton = createSidebarButton("Mostrar Email", 120);
-        JButton usernameButton = createSidebarButton("Mostrar Username", 190);
-        JButton amigosButton = createSidebarButton("Mostrar Amigos", 260);
-        JButton conquistasButton = createSidebarButton("Conquistas", 330);
-        JButton listButton = createSidebarButton("Lista de Desejos", 400);
-        JButton exitButton = createSidebarButton("Sair", 470);
+        JButton apelidoButton = createSidebarButton("Mostrar Apelido", 40);
+        JButton emailButton = createSidebarButton("Mostrar Email", 110);
+        JButton usernameButton = createSidebarButton("Mostrar Username", 180);
+        JButton amigosButton = createSidebarButton("Lista de Amigos", 250);
+        JButton conquistasButton = createSidebarButton("Conquistas", 320);
+        JButton listButton = createSidebarButton("Lista de Desejos", 390);
+        JButton backButton = createSidebarButton("Voltar",460);
+        JButton exitButton = createSidebarButton("Sair", 530);
 
         sidebar.add(apelidoButton);
         sidebar.add(emailButton);
@@ -59,6 +60,7 @@ public class Screen2 extends JFrame {
         sidebar.add(amigosButton);
         sidebar.add(conquistasButton);
         sidebar.add(listButton);
+        sidebar.add(backButton);
         sidebar.add(exitButton);
 
         // Painel Principal
@@ -105,6 +107,11 @@ public class Screen2 extends JFrame {
             textArea.setText(sb.toString());
         });
         exitButton.addActionListener(e -> System.exit(0));  // Fecha o programa
+
+        backButton.addActionListener(e -> {
+            new Screen(perfil);  //
+            dispose();  // Fecha a tela atual
+        });
 
         setVisible(true);
     }
