@@ -65,18 +65,18 @@ public class Screen3 extends JFrame {
 
         // String para imagens capas local pc
         String[] imagePaths = {
-                "C:/Users/Thales/OneDrive/Imagens/capas/Elden_Ring.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Cs_2.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Resident_Evil4_Remake.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Lenda_Heroi.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/TheLastOfUs.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Hollow_Knight.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/League_Of_Legends.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Valorant.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Minecraft.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Elypse.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Hades.jpg",
-                "C:/Users/Thales/OneDrive/Imagens/capas/Zomboid.jpg"
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Cs_2.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Elden_Ring.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Elypse.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Hades.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Hollow_Knight.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\League_Of_Legends.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Lenda_Heroi.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Minecraft.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Resident_Evil4_Remake.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\TheLastOfUs.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Valorant.jpg",
+                "\\\\wsl.localhost\\Ubuntu\\home\\rafaelalvestech\\POOProjetoUFBA\\capas\\Zomboid.jpg"
         };
 
 
